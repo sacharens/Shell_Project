@@ -1,0 +1,12 @@
+#!/bin/bash
+DIR_SURCE=~/Documents/HertzLab/HLA/data/Human_cov/Proteom/SARS_CoV/
+FILENAME=SARS
+echo $DIR_SURCE$FILENAME
+cd $DIR_SURCE
+echo `ls`
+tar -xvf $FILENAME.tar
+TAR_FOLDER=`ls -l | grep "^drw" | awk '{print $9}'`
+cd $TAR_FOLDER
+gunzip -f *.gz
+
+echo `ls`

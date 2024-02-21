@@ -1,0 +1,18 @@
+#!/bin/bash
+
+DIR_P=~/Documents/HertzLab/HLA/data/Human_cov/Proteom/cov_2_faa/
+DIR_V=~/Documents/HertzLab/HLA/data/Human_cov/Proteom/all_faa_of_viruses/
+DIR_DB=~/Documents/HertzLab/HLA/data/sars_db/
+DIR_R=~/Documents/HertzLab/HLA/data/new_blast_run/
+
+for file in `ls $DIR_V`; do
+	FILE=$file
+	FILE="${FILE%.faa}"
+	~/ncbi-blast-2.10.0+/bin/makeblastdb -in $DIR_V$file  -dbtype prot -out $DIR_DB$FILE
+	for protien in `ls $DIR_P`; do
+		OUT=$protien
+		OUT="${OUT%.faa}"
+		OUT=$OUT$FILE
+		~/ncbi-blast-2.10.0+/bin/blastp -db $DIR_DB$FILE -query $DIR_P$protien    -out $DIR_R$OUT -outfmt 7
+	done
+done

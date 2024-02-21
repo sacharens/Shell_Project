@@ -1,0 +1,42 @@
+#!/bin/bash
+# how to use:
+# call the script with an executabole command and only one var is to be sent with it, the path to save all the files. usally student...
+
+WHITE="\e[39m"
+RED="\e[31m"
+GREEN="\e[32m"
+
+[[ -z $1 ]] && echo -e ${RED}Missing path${WHITE} && exit
+
+DIR1=${1}
+
+echo the directory chosen :
+echo $DIR1
+
+
+cd $DIR1
+
+
+echo starting clone process...
+
+# Declare a string array with type
+declare -a StringArray=( "alinajol" "dafnaeli" "goldenth" "baris" "shakedis" "hilloum" "meshiz" "moshesac" "avav" "nimni" "aronmaya" "malcayuv" "cshan" "omerilo" "rotemlah" "benmaman" "astarm" "nassare" "shirasin" "adinafta" "falikdan" "narcross" "reutei" "itayca" "ostrdani" "gilso" "osheter" "givonsh" "gashrish" "meirmanv")
+sleep 5
+# Read the array values with space
+for val in "${StringArray[@]}"; do
+  echo $val 
+  # git clone https://github.com/PYCourse470/$val.git
+  git clone https://PYCourse470:59c2235377fae2307bab9e2c76718d5d1ad4def5@github.com/PYCourse470/$val.git
+  # echo "$PYCourse470" 
+  # echo -e "\n"
+  # sleep 5
+  # echo "$59c2235377fae2307bab9e2c76718d5d1ad4def5"
+  # echo -e "\n"
+  sleep 5
+done
+
+
+# token:
+# 59c2235377fae2307bab9e2c76718d5d1ad4def5
+# username:
+# PYCourse470
